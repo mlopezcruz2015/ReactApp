@@ -38,6 +38,7 @@ body {
 	font-family: "Open Sans", sans-serif;
 	-webkit-font-smoothing: antialiased;
 	font-smoothing: antialiased;
+	background-color: gainsboro;
 }
 
 h1,
