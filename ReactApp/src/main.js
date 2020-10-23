@@ -54,24 +54,45 @@ export default function App() {
 
     
     return (
-        <div >
-            
-            {
-              cars.map((item, i) => {
-                   return (
-                          <React.Fragment>
-                           <div className="car_title">
-                               <div><a style={{color:"black"}}   key={i}>{item.plate} </a></div>
-                           <div><img src={`data:image/png;base64,${item.image}`}/></div>
-                           
-                           </div>
-                        
-                           </React.Fragment>
-                    );
-                    
-                })
-            }
-        </div>
+
+			  <div class="row">
+				{
+				  cars.map((item, i) => {
+					  
+					//Create date objects to be used with output
+					  var createdAtDate = new Date(item.createdAt);
+					  var updatedAtDate = new Date(item.updatedAt);
+					  
+					  //Date Options
+					  var options = {
+									  hour: 'numeric',
+									  minute: 'numeric',
+									  hour12: true
+									};
+					  
+					   return (
+						  <React.Fragment>
+
+						    <div class="col-lg-4 col-md-6 col-sm-6" key={i}>
+								<a style={{color:"black"}} href="#">
+									<div class="services-item">
+										<img src={`data:image/png;base64,${item.image}`}/>
+										<div>Plate: {item.plate}</div>
+										<div>Make: {item.make}</div>
+										<div>Created: {createdAtDate.getMonth()}/{createdAtDate.getDate()}/{createdAtDate.getFullYear()} {createdAtDate.toLocaleString('en-US', options)}</div>
+										<div>Updated: {updatedAtDate.getMonth()}/{updatedAtDate.getDate()}/{updatedAtDate.getFullYear()} {updatedAtDate.toLocaleString('en-US', options)}</div>
+									</div>
+								</a>
+							</div>
+							
+						   </React.Fragment>
+						);
+						
+					})
+				}
+				
+			</div>
+		
     )
 }
 
