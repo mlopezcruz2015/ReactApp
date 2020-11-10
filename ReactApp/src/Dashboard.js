@@ -1,14 +1,15 @@
+import React from 'react';
 import { Component } from "react";
-import React from "react"
 import { useEffect, useState } from "react";
 import PropTypes from "react"
-
-
-export default function App() {
-    const [error, setError] = useState(null);
-    const [isLoaded, setIsLoaded] = useState(false);
-    const [cars, setCars] = useState([]);
-
+import { getUser, removeUserSession } from './Utils/Common';
+ 
+function Dashboard(props) {
+  const user = getUser();
+  const [error, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [cars, setCars] = useState([]);
+ 
     // Note: the empty deps array [] means
     // this useEffect will run once
     // similar to componentDidMount()
@@ -48,14 +49,15 @@ export default function App() {
                 //--console.log(news)
             )
     },[])
-
-
-
-
-    
-    return (
-
-			  <div class="row">
+ 
+ 
+      //Welcome {user.name}!<br /><br />//
+	  
+  return (
+    <div>
+	  Welcome User!<br /><br />
+	  
+	  <div class="row">
 				{
 				  cars.map((item, i) => {
 					  
@@ -92,9 +94,8 @@ export default function App() {
 				}
 				
 			</div>
-		
-    )
+    </div>
+  );
 }
-
-
-
+ 
+export default Dashboard;
