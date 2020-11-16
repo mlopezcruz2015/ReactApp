@@ -53,9 +53,18 @@ function Dashboard(props) {
  
       //Welcome {user.name}!<br /><br />//
 	  
+	  function handleSort(e) {
+		  
+  }
+  
   return (
     <div>
 	  Welcome User!<br /><br />
+	Sort By: <select id = "sortBy" onChange={handleSort}>
+               <option value = "dateup">Date (newest first)</option>
+               <option value = "datedown">Date (oldest first)</option>
+               <option value = "plate">Plate</option>
+             </select><br /><br />
 	  
 	  <div class="row">
 				{
