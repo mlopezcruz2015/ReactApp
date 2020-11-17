@@ -26,19 +26,21 @@ function Login(props) {
   }
  
   return (
-    <div>
-      Login<br /><br />
-      <div>
-        Username<br />
-        <input type="text" {...username} autoComplete="new-password" />
-      </div>
-      <div style={{ marginTop: 10 }}>
-        Password<br />
-        <input type="password" {...password} autoComplete="new-password" />
-      </div>
-      {error && <><small style={{ color: 'red' }}>{error}</small><br /></>}<br />
-      <input type="button" value={loading ? 'Loading...' : 'Login'} onClick={handleLogin} disabled={loading} /><br />
+  
+		<div class="contact-form">
+		<div class="container-fluid">
+		<div class="row">
+		<div class="col-lg-4">                       
+		<h3>Login Form</h3>
+		<input class="form-control" type="text" {...username} autoComplete="new-password" placeholder="Username"/><br /> <br />      
+        <input class="form-control" type="password" {...password} autoComplete="new-password" placeholder="Password"/><br />     	
+		{error && <><small style={{ color: 'red' }}>{error}</small><br /></>}<br />	  
+		<input class="btn btn-primary" type="button" class="site-btn" value={loading ? 'Loading...' : 'Login'} onClick={handleLogin} disabled={loading} /><br />
     </div>
+	</div>
+	</div>
+	</div>
+	
   );
 }
  

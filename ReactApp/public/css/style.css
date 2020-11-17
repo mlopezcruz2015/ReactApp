@@ -49,7 +49,7 @@ h5,
 h6 {
 	margin: 0;
 	color: #111111;
-	font-weight: 400;
+	font-weight: 700;
 	font-family: "Quantico", sans-serif;
 }
 
@@ -1572,6 +1572,15 @@ ol {
 	text-transform: uppercase;
 }
 
+.label {
+	font-size: 20px;
+	color: #444444;
+	font-weight: 600;
+	display: inline-block;
+	padding: 2px 12px;
+	text-transform: uppercase;
+}
+
 .blog-item .bi-text h5 {
 	margin-top: 20px;
 	margin-bottom: 10px;
@@ -2377,6 +2386,12 @@ ol {
 	display: none;
 }
 
+.contact-form {
+	display: block;
+	margin-left: auto;
+    margin-right: auto;
+}
+
 .contact-form h3 {
 	color: #111111;
 	font-weight: 700;
@@ -2390,10 +2405,11 @@ ol {
 	padding-left: 20px;
 	font-size: 14px;
 	color: #444444;
-	background: transparent;
+	background: white;
 	margin-bottom: 30px;
 	border: 1px solid #e1e1e1;
 }
+
 
 .contact-form form input::-webkit-input-placeholder {
 	color: #444444;
@@ -2422,7 +2438,7 @@ ol {
 	height: 100px;
 	font-size: 14px;
 	color: #444444;
-	background: transparent;
+	background: white;
 	resize: none;
 	border: 1px solid #e1e1e1;
 	margin-bottom: 24px;
@@ -2467,6 +2483,7 @@ ol {
 	.header-section {
 		padding-left: 85px;
 		padding-right: 85px;
+		background-color: white;
 	}
 }
 

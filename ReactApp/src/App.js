@@ -42,14 +42,28 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
+	  
+		  <header class="header-section">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-12">
+						<nav class="nav-menu mobile-menu">
+							<ul>
+								<li><NavLink exact activeClassName="active" to="/">Home</NavLink></li>
+								<li><NavLink activeClassName="active" to="/login">Login</NavLink></li>
+								<li><NavLink activeClassName="active" to="/dashboard">Dashboard</NavLink></li>
+								<li><NavLink activeClassName="active" to="/adduser">Add User</NavLink></li>
+								<li><NavLink activeClassName="active" to="/login" onClick={handleLogout}>Logout</NavLink></li>								
+							</ul>
+						</nav>
+						<div id="mobile-menu-wrap"></div>
+					</div>
+				</div>
+			</div>
+			</header>
+	  
+	  
         <div>
-          <div className="header">
-            <NavLink exact activeClassName="active" to="/">Home</NavLink>
-            <NavLink activeClassName="active" to="/login">Login</NavLink><small>(Access without token only)</small>
-            <NavLink activeClassName="active" to="/dashboard">Dashboard</NavLink><small>(Access with token only)</small>
-            <NavLink activeClassName="active" to="/adduser">Add User</NavLink><small>(Access with token only)</small>
-            <NavLink activeClassName="active" to="/login" onClick={handleLogout}>Logout</NavLink>
-          </div>
           <div className="content">
             <Switch>
               <Route exact path="/" component={Home} />

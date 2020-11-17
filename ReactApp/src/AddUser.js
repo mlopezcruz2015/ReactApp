@@ -26,19 +26,18 @@ function AddUser(props) {
  
   return (
     <div>
-	  Add User Here<br /><br />
-	  <div>
-        New Username<br />
-        <input type="text" {...username} autoComplete="new-password" />
-      </div>
-      <div style={{ marginTop: 10 }}>
-        New Password<br />
-        <input type="password" {...password} autoComplete="new-password" />
-      </div>
-	  <br />
-      <input type="button" onClick={handleRegisterUser} value="Register User" />
+	  <div class="contact-form">
+		<div class="container-fluid">
+		<div class="row">
+		<div class="col-lg-4">  <h3>ADD USER</h3>
+		<input class="form-control" type="text" {...username} autoComplete="new-username" placeholder="New Username"/><br /> <br />      
+        <input class="form-control" type="password" {...password} autoComplete="new-password" placeholder="New Password"/>     <br />  <br />  
+		<input class="form-control center" type="button" class="site-btn" onClick={handleRegisterUser} value="Register User" />
+    </div>
+	</div>
+	</div>
+	</div>
 	  
-	  <br />
 	  <br />
 	<span>Just for Testing:</span>
 	  <br />

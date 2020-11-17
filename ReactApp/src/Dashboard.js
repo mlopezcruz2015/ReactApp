@@ -59,13 +59,16 @@ function Dashboard(props) {
   
   return (
     <div>
-	  Welcome User!<br /><br />
-	Sort By: <select id = "sortBy" onChange={handleSort}>
+		<h3>DASHBOARD</h3> <br />
+		
+			<label class="label" for="sortBy">Sort By:</label>
+			<select class="form-control" id = "sortBy" onChange={handleSort}>
                <option value = "dateup">Date (newest first)</option>
                <option value = "datedown">Date (oldest first)</option>
                <option value = "plate">Plate</option>
              </select><br /><br />
-	  
+	                     
+						 
 	  <div class="row">
 				{
 				  cars.map((item, i) => {
