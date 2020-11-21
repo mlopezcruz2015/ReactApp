@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { setUserSession } from './Utils/Common';
+import firebase from './firebase';
  
 function Login(props) {
   const username = useFormInput('');
@@ -10,7 +11,18 @@ function Login(props) {
  
   // handle button click of login form
   const handleLogin = () => {
-    props.history.push('/dashboard');
+    
+    firebase.auth()
+            .signInWithEmailAndPassword(username.value, password.value)
+            .then(() => props.history.push('/dashboard'))
+            .catch(error => {
+               // console.log(error.message)
+               setError(JSON.stringify(error.message))
+                
+                //console.log(typeof myerror);
+                
+                
+            })
 	
 //	setError(null);
 //    setLoading(true);
@@ -32,7 +44,7 @@ function Login(props) {
 		<div class="row">
 		<div class="col-lg-4">                       
 		<h3>Login Form</h3>
-		<input class="form-control" type="text" {...username} autoComplete="new-password" placeholder="Username"/><br /> <br />      
+		<input class="form-control" type="text" {...username} autoComplete="new-password"  placeholder="Username"/><br /> <br />      
         <input class="form-control" type="password" {...password} autoComplete="new-password" placeholder="Password"/><br />     	
 		{error && <><small style={{ color: 'red' }}>{error}</small><br /></>}<br />	  
 		<input class="btn btn-primary" type="button" class="site-btn" value={loading ? 'Loading...' : 'Login'} onClick={handleLogin} disabled={loading} /><br />
@@ -49,6 +61,7 @@ const useFormInput = initialValue => {
  
   const handleChange = e => {
     setValue(e.target.value);
+    console.log(e.target.value)
   }
   return {
     value,

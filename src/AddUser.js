@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import firebase from './firebase'
  
 function AddUser(props) {
   const username = useFormInput('');
@@ -9,7 +10,13 @@ function AddUser(props) {
   
   // handle click event of Register Button
   const handleRegisterUser = () => {
-	  
+    firebase.auth()
+    .createUserWithEmailAndPassword(username.value, password.value)
+    .then(() => props.history.push('/dashboard'))
+    .catch(error => {
+      setError(JSON.stringify(error.message))
+      
+  })
 	  //	setError(null);
 //    setLoading(true);
 //    axios.post('http://localhost:4000/users/signin', { username: username.value, password: password.value }).then(response => {
@@ -33,17 +40,19 @@ function AddUser(props) {
 		<input class="form-control" type="text" {...username} autoComplete="new-username" placeholder="New Username"/><br /> <br />      
         <input class="form-control" type="password" {...password} autoComplete="new-password" placeholder="New Password"/>     <br />  <br />  
 		<input class="form-control center" type="button" class="site-btn" onClick={handleRegisterUser} value="Register User" />
+    <div> {error && <><small style={{ color: 'red' }}>{error}</small><br /></>}<br /> </div>
     </div>
 	</div>
 	</div>
 	</div>
 	  
-	  <br />
+	  {/*<br />
 	<span>Just for Testing:</span>
 	  <br />
 	<span>Username entered: {username.value}</span>
 	  <br />
-	<span>Password entered: {password.value}</span>
+  <span>Password entered: {password.value}</span>
+    */}
     </div>
 	
   );

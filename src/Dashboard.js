@@ -7,8 +7,11 @@ import { getUser, removeUserSession } from './Utils/Common';
 function Dashboard(props) {
   const user = getUser();
   const [error, setError] = useState(null);
+  const [error_1, setError_1] = useState(null)
   const [isLoaded, setIsLoaded] = useState(false);
   const [cars, setCars] = useState([]);
+  const [authorize, setAuthorize] = useState([])
+  const [order , setOrder] = useState("Timestamp")
  
     // Note: the empty deps array [] means
     // this useEffect will run once
@@ -16,11 +19,12 @@ function Dashboard(props) {
     //{ http://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=30b317c25db0463c99fd191178074008}
     useEffect(() => {
         
+      console.log("executed", order)
        
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ order: "Timestamp" })
+            body: JSON.stringify({ order: order })
         };
         fetch('https://my-python-project.azurewebsites.net/image/show', requestOptions)
             .then(response => response.json())
@@ -41,20 +45,43 @@ function Dashboard(props) {
                 // instead of a catch() block so that we don't swallow
                 // exceptions from actual bugs in components.
                 (error) => {
-                    this.setState({
-                        isLoaded: true,
-                        error
-                    });
+                console.log(error)
                 },
                 //--console.log(news)
             )
-    },[])
+
+            fetch('https://my-python-project.azurewebsites.net/authorize/show', requestOptions)
+            .then(response => response.json())
+            
+            .then(
+                (result) => {
+                    var new_Array = [];
+                     for (var authorize in result) {
+                         new_Array.push(result[authorize].plate)
+                     }
+
+                    
+                 console.log(new_Array);  
+                 setAuthorize(new_Array);
+                   
+                },
+
+                (error) => {
+                  console.log(error)
+                  },
+
+            )
+
+
+
+    }, [order])
  
  
       //Welcome {user.name}!<br /><br />//
 	  
 	  function handleSort(e) {
-		  
+      console.log(e.target.value)
+      setOrder(e.target.value)
   }
   
   return (
@@ -63,15 +90,25 @@ function Dashboard(props) {
 		
 			<label class="label" for="sortBy">Sort By:</label>
 			<select class="form-control" id = "sortBy" onChange={handleSort}>
-               <option value = "dateup">Date (newest first)</option>
-               <option value = "datedown">Date (oldest first)</option>
-               <option value = "plate">Plate</option>
+               <option value = "Timestamp">Date (newest first)</option> 
+               <option value = "Timestamp_up">Date (oldest first)</option>                           
+               <option value = "Plate">Plate</option>
              </select><br /><br />
 	                     
 						 
 	  <div class="row">
 				{
 				  cars.map((item, i) => {
+
+            if(authorize.includes(item.plate) == false )
+            { 
+            var showAuthorize = true
+            }
+
+            else{
+            var  showAuthorize = false
+            }
+
 					  
 					//Create date objects to be used with output
 					  var createdAtDate = new Date(item.createdAt);
@@ -95,7 +132,8 @@ function Dashboard(props) {
 										<div>Make: {item.make}</div>
 										<div>Created: {createdAtDate.getMonth()}/{createdAtDate.getDate()}/{createdAtDate.getFullYear()} {createdAtDate.toLocaleString('en-US', options)}</div>
 										<div>Updated: {updatedAtDate.getMonth()}/{updatedAtDate.getDate()}/{updatedAtDate.getFullYear()} {updatedAtDate.toLocaleString('en-US', options)}</div>
-									</div>
+									  {showAuthorize && <button>Authorize</button>}
+                  </div>
 								</a>
 							</div>
 							
