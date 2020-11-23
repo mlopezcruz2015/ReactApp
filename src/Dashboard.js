@@ -126,14 +126,14 @@ function Dashboard(props) {
 
 						    <div class="col-lg-4 col-md-6 col-sm-6" key={i}>
 								<a style={{color:"black"}} href="#">
-									<div class="services-item">
+									<div  style={ showAuthorize ? {background: '#FFBFBF'} : {background: '#B2F1B7'}} class="services-item">
 										<img class="carimage" src={`data:image/png;base64,${item.image}`}/>
 										<div>Plate: {item.plate}</div>
 										<div>Make: {item.make}</div>
 										<div>Created: {createdAtDate.getMonth()}/{createdAtDate.getDate()}/{createdAtDate.getFullYear()} {createdAtDate.toLocaleString('en-US', options)}</div>
 										<div>Updated: {updatedAtDate.getMonth()}/{updatedAtDate.getDate()}/{updatedAtDate.getFullYear()} {updatedAtDate.toLocaleString('en-US', options)}</div>
-									  {showAuthorize && <button>Authorize</button>}
-                  </div>
+									  {showAuthorize && <button type="button" class="btn btn-light">Authorize</button>}
+									</div>
 								</a>
 							</div>
 							
