@@ -127,7 +127,7 @@ function Dashboard(props) {
 						    <div class="col-lg-4 col-md-6 col-sm-6" key={i}>
 								<a style={{color:"black"}} href="#">
 									<div class="services-item">
-										<img src={`data:image/png;base64,${item.image}`}/>
+										<img class="carimage" src={`data:image/png;base64,${item.image}`}/>
 										<div>Plate: {item.plate}</div>
 										<div>Make: {item.make}</div>
 										<div>Created: {createdAtDate.getMonth()}/{createdAtDate.getDate()}/{createdAtDate.getFullYear()} {createdAtDate.toLocaleString('en-US', options)}</div>
