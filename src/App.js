@@ -4,7 +4,6 @@ import axios from 'axios';
  
 import Login from './Login';
 import Dashboard from './Dashboard';
-import Home from './Home';
 import AddUser from './AddUser';
  
 import PrivateRoute from './Utils/PrivateRoute';
@@ -49,7 +48,6 @@ function App() {
 					<div class="col-lg-12">
 						<nav class="nav-menu mobile-menu">
 							<ul>
-								<li><NavLink exact activeClassName="active" to="/">Home</NavLink></li>
 								<li><NavLink activeClassName="active" to="/login">Login</NavLink></li>
 								<li><NavLink activeClassName="active" to="/dashboard">Dashboard</NavLink></li>
 								<li><NavLink activeClassName="active" to="/adduser">Add User</NavLink></li>
@@ -66,7 +64,7 @@ function App() {
         <div>
           <div className="content">
             <Switch>
-              <Route exact path="/" component={Home} />
+              <Route exact path="/" component={Login} />
               <PublicRoute path="/login" component={Login} />
               <PublicRoute path="/dashboard" component={Dashboard} />
               <PublicRoute path="/adduser" component={AddUser} />
