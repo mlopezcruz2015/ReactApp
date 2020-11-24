@@ -101,7 +101,7 @@ function Dashboard(props) {
 		 const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ owner: owner,
+            body: JSON.stringify({ ownership: owner,
 								   plate: plate})
         };
         fetch('https://my-python-project.azurewebsites.net/authorize/save', requestOptions);		
@@ -109,7 +109,7 @@ function Dashboard(props) {
   
   return (	  
     <div>
-		<h3>DASHBOARD</h3> <br />
+		<h3 class="center-nav col-lg-2" >DASHBOARD</h3> <br />
 		
 			<label class="label" for="sortBy">Sort By:</label>
 			<select class="form-control" id = "sortBy" onChange={handleSort}>
