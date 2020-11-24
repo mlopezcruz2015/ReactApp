@@ -43,7 +43,7 @@ function App() {
       <BrowserRouter>
 	  
 		  <header class="header-section">
-			<div class="container-fluid">
+			<div class="container-fluid center-nav">
 				<div class="row">
 					<div class="col-lg-12">
 						<nav class="nav-menu mobile-menu">
