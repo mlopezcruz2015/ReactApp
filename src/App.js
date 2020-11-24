@@ -5,6 +5,7 @@ import axios from 'axios';
 import Login from './Login';
 import Dashboard from './Dashboard';
 import AddUser from './AddUser';
+import firebase from './firebase';
  
 import PrivateRoute from './Utils/PrivateRoute';
 import PublicRoute from './Utils/PublicRoute';
@@ -36,6 +37,13 @@ function App() {
    // handle click event of logout button
   const handleLogout = () => {
     removeUserSession();
+
+
+		firebase.auth().signOut().then(function() {
+	  // Sign-out successful.
+	}).catch(function(error) {
+	  // An error happened.
+	});
   }
   
   return (
