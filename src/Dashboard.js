@@ -167,7 +167,7 @@ function Dashboard(props) {
 										<div>Make: {item.make}</div>
 										<div>Created: {createdAtDate.getMonth()}/{createdAtDate.getDate()}/{createdAtDate.getFullYear()} {createdAtDate.toLocaleString('en-US', options)}</div>
 										<div>Updated: {updatedAtDate.getMonth()}/{updatedAtDate.getDate()}/{updatedAtDate.getFullYear()} {updatedAtDate.toLocaleString('en-US', options)}</div>
-									  {showAuthorize && <button type="button" class="btn btn-light" onClick={showAuthorizationForm(item.plate)}>Authorize</button>}
+									  {showAuthorize && <button type="button" class="btn btn-light" onClick={() => showAuthorizationForm(item.plate)}>Authorize</button>}
 									</div>
 								</a>
 							</div>
