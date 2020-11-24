@@ -39,15 +39,15 @@ function Login(props) {
  
   return (
   
-		<div class="contact-form">
+		<div class="contact-form center">
 		<div class="container-fluid">
 		<div class="row">
-		<div class="col-lg-4">                       
+		<div class="col-lg-12 text-center">                       
 		<h3>Login Form</h3>
 		<input class="form-control" type="text" {...username} autoComplete="new-password"  placeholder="Username"/><br /> <br />      
         <input class="form-control" type="password" {...password} autoComplete="new-password" placeholder="Password"/><br />     	
 		{error && <><small style={{ color: 'red' }}>{error}</small><br /></>}<br />	  
-		<input class="btn btn-primary" type="button" class="site-btn" value={loading ? 'Loading...' : 'Login'} onClick={handleLogin} disabled={loading} /><br />
+		<input type="button" class="site-btn col-lg-6" value={loading ? 'Loading...' : 'Login'} onClick={handleLogin} disabled={loading} /><br />
     </div>
 	</div>
 	</div>
