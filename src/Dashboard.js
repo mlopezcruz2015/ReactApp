@@ -5,6 +5,8 @@ import PropTypes from "react"
 import { getUser, removeUserSession } from './Utils/Common';
  
 function Dashboard(props) {
+  const owner = useFormInput('');
+  const plate = useFormInput('');
   const user = getUser();
   const [error, setError] = useState(null);
   const [error_1, setError_1] = useState(null)
@@ -12,6 +14,7 @@ function Dashboard(props) {
   const [cars, setCars] = useState([]);
   const [authorize, setAuthorize] = useState([])
   const [order , setOrder] = useState("Timestamp")
+  const [showAuthForm, setShowAuthForm] = useState(false);
  
     // Note: the empty deps array [] means
     // this useEffect will run once
@@ -84,7 +87,27 @@ function Dashboard(props) {
       setOrder(e.target.value)
   }
   
-  return (
+     function showAuthorizationForm(plateNumber) {
+		 setShowAuthForm(true)
+		 plate.setValue(plateNumber)
+	 }
+     function closeAuthForm() {
+		 setShowAuthForm(false)
+	 }
+	 
+     function submitAuth() {
+		 setShowAuthForm(false)
+		 
+		 const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ owner: owner,
+								   plate: plate})
+        };
+        fetch('https://my-python-project.azurewebsites.net/authorize/save', requestOptions);		
+	 }
+  
+  return (	  
     <div>
 		<h3>DASHBOARD</h3> <br />
 		
@@ -93,10 +116,21 @@ function Dashboard(props) {
                <option value = "Timestamp">Date (newest first)</option> 
                <option value = "Timestamp_up">Date (oldest first)</option>                           
                <option value = "Plate">Plate</option>
-             </select><br /><br />
-	                     
-						 
+             </select><br /><br />			
+			 
+			 <div id="authorizationForm" class="center hideform text-center contact-form" style={{display: showAuthForm ? "block" : 'none'}}>									  
+					Owner: <input class="form-control" name="ownerAuth" {...owner} type="text" name="owner" value={owner.value} placeholder="Owner"/>
+					<br />
+					Plate: <input class="form-control" name="plateAuth" {...plate} type="text" name="plate" value={plate.value} placeholder="Plate"/>
+					<br />
+					<input type="button" class="site-btn col-lg-6" onClick={submitAuth} value = "Make Authorized"/><br /><br />
+					<input type="button" class="col-lg-6 btn btn-danger" onClick={closeAuthForm} value = "Cancel"/><br /><br />
+					<span>Plate #:"{plate.value}"</span><br /><span>Owner: "{owner.value}"</span>
+			  </div>
+			 
 	  <div class="row">
+
+	  
 				{
 				  cars.map((item, i) => {
 
@@ -124,6 +158,7 @@ function Dashboard(props) {
 					   return (
 						  <React.Fragment>
 
+				
 						    <div class="col-lg-4 col-md-6 col-sm-6" key={i}>
 								<a style={{color:"black"}} href="#">
 									<div  style={ showAuthorize ? {background: '#FFBFBF'} : {background: '#B2F1B7'}} class="services-item">
@@ -132,7 +167,7 @@ function Dashboard(props) {
 										<div>Make: {item.make}</div>
 										<div>Created: {createdAtDate.getMonth()}/{createdAtDate.getDate()}/{createdAtDate.getFullYear()} {createdAtDate.toLocaleString('en-US', options)}</div>
 										<div>Updated: {updatedAtDate.getMonth()}/{updatedAtDate.getDate()}/{updatedAtDate.getFullYear()} {updatedAtDate.toLocaleString('en-US', options)}</div>
-									  {showAuthorize && <button type="button" class="btn btn-light">Authorize</button>}
+									  {showAuthorize && <button type="button" class="btn btn-light" onClick={showAuthorizationForm(item.plate)}>Authorize</button>}
 									</div>
 								</a>
 							</div>
@@ -146,6 +181,21 @@ function Dashboard(props) {
 			</div>
     </div>
   );
+}
+
+const useFormInput = initialValue => {
+  const [value, setValue] = useState(initialValue);
+ 
+  const handleChange = e => {
+    setValue(e.target.value);
+    console.log(e.target.value)
+  }
+  
+  return {
+    value,
+	setValue,
+    onChange: handleChange
+  }
 }
  
 export default Dashboard;
