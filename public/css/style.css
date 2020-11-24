@@ -114,6 +114,17 @@ ol {
   Helper CSS
 -----------------------*/
 
+.center {
+    margin: auto;
+    width: 60%;
+    padding: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.hideform {
+    display: none;
+}
+
 .section-title {
 	margin-bottom: 40px;
 }
@@ -555,10 +566,10 @@ ol {
 	padding: 10px 10px 18px 10px;
 	background: #ffffff;
 	-webkit-box-shadow: 0px 10px 25px rgba(206, 206, 206, 0.5);
-	box-shadow: 0px 10px 25px rgba(206, 206, 206, 0.5);
 	margin-bottom: 30px;
 	border: 1px groove grey;
 	border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .services-item img {
