@@ -118,7 +118,7 @@ function Dashboard(props) {
                <option value = "Plate">Plate</option>
              </select><br /><br />			
 			 
-			 <div id="authorizationForm" class="center hideform text-center contact-form" style={{display: showAuthForm ? "block" : 'none'}}>									  
+			 <div id="authorizationForm" class="authForm center text-center contact-form" style={{display: showAuthForm ? "block" : 'none'}}>									  
 					Owner: <input class="form-control" name="ownerAuth" {...owner} type="text" name="owner" value={owner.value} placeholder="Owner"/>
 					<br />
 					Plate: <input class="form-control" name="plateAuth" {...plate} type="text" name="plate" value={plate.value} placeholder="Plate"/>
@@ -126,7 +126,9 @@ function Dashboard(props) {
 					<input type="button" class="site-btn col-lg-6" onClick={submitAuth} value = "Make Authorized"/><br /><br />
 					<input type="button" class="col-lg-6 btn btn-danger" onClick={closeAuthForm} value = "Cancel"/><br /><br />
 					<span>Plate #:"{plate.value}"</span><br /><span>Owner: "{owner.value}"</span>
-			  </div>
+				</div>
+			  
+			  
 			 
 	  <div class="row">
 
@@ -160,7 +162,7 @@ function Dashboard(props) {
 
 				
 						    <div class="col-lg-4 col-md-6 col-sm-6" key={i}>
-								<a style={{color:"black"}} href="#">
+								<a style={{color:"black"}} href='javascript:void();'>
 									<div  style={ showAuthorize ? {background: '#FFBFBF'} : {background: '#B2F1B7'}} class="services-item">
 										<img class="carimage" src={`data:image/png;base64,${item.image}`}/>
 										<div>Plate: {item.plate}</div>
