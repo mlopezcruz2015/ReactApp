@@ -114,6 +114,20 @@ ol {
   Helper CSS
 -----------------------*/
 
+.authForm {
+    position: fixed;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+  z-index: 500;
+  
+	background: gainsboro;
+	border: 5px groove grey;
+	border-radius: 5px;
+    box-shadow: 5px 10px 8px #888888:
+}
+
 .center {
     margin: auto;
     width: 60%;
@@ -568,6 +582,8 @@ ol {
 }
 
 .services-item {
+	z-index:100;
+	position:relative;
 	text-align: center;
 	padding: 10px 10px 18px 10px;
 	background: #ffffff;
