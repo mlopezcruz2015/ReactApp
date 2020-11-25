@@ -76,6 +76,7 @@ function App() {
               <PublicRoute path="/login" component={Login} />
               <PublicRoute path="/dashboard" component={Dashboard} />
               <PublicRoute path="/adduser" component={AddUser} />
+			  <Route path="*" component={Login} />
             </Switch>
           </div>
         </div>
