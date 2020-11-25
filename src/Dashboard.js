@@ -95,16 +95,19 @@ function Dashboard(props) {
 		 setShowAuthForm(false)
 	 }
 	 
-     function submitAuth() {
-		 setShowAuthForm(false)
-		 
-		 const requestOptions = {
+     async function submitAuth() {		 
+	 
+	 
+		 const requestOpt = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ ownership: owner,
-								   plate: plate})
+            body: JSON.stringify({ ownership: owner.value,
+								   plate: plate.value})
         };
-        fetch('https://my-python-project.azurewebsites.net/authorize/save', requestOptions);		
+        const response = await fetch('https://my-python-project.azurewebsites.net/authorize/save', requestOpt);
+
+		 setShowAuthForm(false)		 
+		window.location.reload(true);	
 	 }
   
   return (	  
