@@ -43,7 +43,7 @@ function Login(props) {
 		<div class="container-fluid">
 		<div class="row">
 		<div class="col-lg-12 text-center">                       
-		<h3>Login Form</h3>
+		<h3>Login</h3>
 		<input class="form-control" type="text" {...username} autoComplete="new-password"  placeholder="Username"/><br /> <br />      
         <input class="form-control" type="password" {...password} autoComplete="new-password" placeholder="Password"/><br />     	
 		{error && <><small style={{ color: 'red' }}>{error}</small><br /></>}<br />	  
