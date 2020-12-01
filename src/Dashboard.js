@@ -170,8 +170,8 @@ function Dashboard(props) {
 										<img class="carimage" src={`data:image/png;base64,${item.image}`}/>
 										<div>Plate: {item.plate}</div>
 										<div>Make: {item.make}</div>
-										<div>Created: {createdAtDate.getMonth()}/{createdAtDate.getDate()}/{createdAtDate.getFullYear()} {createdAtDate.toLocaleString('en-US', options)}</div>
-										<div>Updated: {updatedAtDate.getMonth()}/{updatedAtDate.getDate()}/{updatedAtDate.getFullYear()} {updatedAtDate.toLocaleString('en-US', options)}</div>
+										<div>Created: {createdAtDate.getMonth()+1}/{createdAtDate.getDate()}/{createdAtDate.getFullYear()} {createdAtDate.toLocaleString('en-US', options)}</div>
+										<div>Updated: {updatedAtDate.getMonth()+1}/{updatedAtDate.getDate()}/{updatedAtDate.getFullYear()} {updatedAtDate.toLocaleString('en-US', options)}</div>
 									  {showAuthorize && <button type="button" class="btn btn-light" onClick={() => showAuthorizationForm(item.plate)}>Authorize</button>}
 									</div>
 								</a>
