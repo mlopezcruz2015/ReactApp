@@ -2,19 +2,25 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { setUserSession } from './Utils/Common';
 import firebase from './firebase';
+import { useEffect } from "react";
  
 function Login(props) {
   const username = useFormInput('');
   const password = useFormInput('');
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
- 
+   const [authentication, setAuthState] = useState({
+    authenticated: false,
+    initializing: true
+  });
+  
   // handle button click of login form
   const handleLogin = () => {
     
     firebase.auth()
             .signInWithEmailAndPassword(username.value, password.value)
-            .then(response => {props.history.push('/dashboard');})
+            .then(response => {setAuthState(true); this.props.history.push('/dashboard');
+			})
             .catch(error => {
                // console.log(error.message)
                setError(JSON.stringify(error.message))
@@ -22,7 +28,10 @@ function Login(props) {
                 //console.log(typeof myerror);
                 
                 
-            })
+            });
+			
+			
+		
 	
 //	setError(null);
 //    setLoading(true);
