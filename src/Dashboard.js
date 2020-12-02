@@ -24,7 +24,14 @@ function Dashboard(props) {
     //{ http://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=30b317c25db0463c99fd191178074008}
     useEffect(() => {
         
-      console.log("executed", order)
+      GetCars();
+
+    }, [order])
+ 
+ 
+      //Welcome {user.name}!<br /><br />//
+	  function GetCars() {
+		  console.log("executed", order)
        
         const requestOptions = {
             method: 'POST',
@@ -82,12 +89,8 @@ function Dashboard(props) {
             )
 
 
-
-    }, [order])
- 
- 
-      //Welcome {user.name}!<br /><br />//
-	  
+  }
+  
 	  function handleSort(e) {
       console.log(e.target.value)
       setOrder(e.target.value)
@@ -110,10 +113,18 @@ function Dashboard(props) {
             body: JSON.stringify({ ownership: owner.value,
 								   plate: plate.value})
         };
-        const response = await fetch('https://my-python-project.azurewebsites.net/authorize/save', requestOpt);
+        const response = await trackPromise(fetch('https://my-python-project.azurewebsites.net/authorize/save', requestOpt));
 
-		 setShowAuthForm(false)		 
-		window.location.reload(true);	
+		 setShowAuthForm(false);	
+		 GetCars();
+		 DisplayUserAuthorized();
+	 }
+	 
+	 
+     function DisplayUserAuthorized(authSuccessful) {
+		 
+		 
+		 
 	 }
   
   return (	  
