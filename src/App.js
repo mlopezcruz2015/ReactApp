@@ -86,7 +86,7 @@ useEffect(()=>firebase.auth().onAuthStateChanged(user => {
               <Route exact path="/" component={authentication.authenticated ? Dashboard : Login} />
               <PublicRoute exact path="/login" component={authentication.authenticated ? Dashboard : Login} />
               <PrivateRoute exact path="/dashboard" component={Dashboard} authenticated={authentication.authenticated}/>
-              <PrivateRoute exact path="/adduser" component={AddUser} authenticated={authentication.authenticated}/>
+              <PublicRoute exact path="/adduser" component={AddUser} authenticated={authentication.authenticated}/>
 			  <Route path="*" component={Login} />
             </Switch>
           </div>

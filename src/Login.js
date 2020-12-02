@@ -56,7 +56,8 @@ function Login(props) {
 		<input class="form-control" type="text" {...username} autoComplete="new-password"  placeholder="Username"/><br /> <br />      
         <input class="form-control" type="password" {...password} autoComplete="new-password" placeholder="Password"/><br />     	
 		{error && <><small style={{ color: 'red' }}>{error}</small><br /></>}<br />	  
-		<input type="button" class="site-btn col-lg-6" value={loading ? 'Loading...' : 'Login'} onClick={handleLogin} disabled={loading} /><br />
+		<input type="button" class="site-btn col-lg-6 btn-info" value={loading ? 'Loading...' : 'Login'} onClick={handleLogin} disabled={loading} /><br /><br />
+		<a href="/adduser" class="site-btn btn-info col-lg-6">Register New User</a>
     </div>
 	</div>
 	</div>

@@ -39,7 +39,8 @@ function AddUser(props) {
 		<div class="col-lg-12 text-center">  <h3>ADD USER</h3>
 		<input class="form-control"  type="text" {...username} autoComplete="new-username" placeholder="New Username"/><br /> <br />      
         <input class="form-control" type="password" {...password} autoComplete="new-password" placeholder="New Password"/>     <br />  <br />  
-		<input type="button" class="site-btn col-lg-6" onClick={handleRegisterUser} value="Register User" />
+		<input type="button" class="site-btn col-lg-6 btn-info" onClick={handleRegisterUser} value="Register User" /><br /> <br /> 
+		<a href="/" class="site-btn btn-info col-lg-6">Go Back</a>
     <div> {error && <><small style={{ color: 'red' }}>{error}</small><br /></>} </div>
     </div>
 	</div>
