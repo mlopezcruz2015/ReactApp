@@ -19,7 +19,7 @@ function Login(props) {
     
     firebase.auth()
             .signInWithEmailAndPassword(username.value, password.value)
-            .then(response => {setAuthState(true); props.history.push('/dashboard');
+            .then(response => {setAuthState(true); this.props.history.push('/dashboard');
 			})
             .catch(error => {
                // console.log(error.message)
