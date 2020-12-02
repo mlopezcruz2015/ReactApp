@@ -65,18 +65,19 @@ useEffect(()=>firebase.auth().onAuthStateChanged(user => {
     <div className="App">
       <BrowserRouter>
 	  
-	  
+	  {!authentication.authenticated && <div class="col-lg-12 text-center"><h2 class="center-nav">Car Detection Web App</h2></div>}
+	  {authentication.authenticated && 
 	  <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
   <Navbar.Collapse id="responsive-navbar-nav">
-    <Nav className="container-fluid nav-item-new mr-auto center-nav">
-      {!authentication.authenticated && <Nav.Link><NavLink activeClassName="active" to="/login" style={ {color: 'green'}} >Login</NavLink></Nav.Link>}
-      {authentication.authenticated && <Nav.Link><NavLink activeClassName="active" to="/dashboard"style={ {color: 'green'}} >Dashboard</NavLink></Nav.Link>}
-      {authentication.authenticated && <Nav.Link><NavLink activeClassName="active" to="/adduser"style={ {color: 'green'}} >Add User</NavLink></Nav.Link>}
-      {authentication.authenticated && <Nav.Link><NavLink activeClassName="active" to="/login" style={ {color: 'green'}} onClick={handleLogout}>Logout</NavLink></Nav.Link>}
+    <Nav className="container-fluid nav-item-new mr-auto center-nav">      
+      <Nav.Link><NavLink activeClassName="active" to="/dashboard"style={ {color: 'green'}} >Dashboard</NavLink></Nav.Link>
+      <Nav.Link><NavLink activeClassName="active" to="/adduser"style={ {color: 'green'}} >Add User</NavLink></Nav.Link>
+      <Nav.Link><NavLink activeClassName="active" to="/login" style={ {color: 'green'}} onClick={handleLogout}>Logout</NavLink></Nav.Link>
     </Nav>
   </Navbar.Collapse>
 </Navbar>
+}
 	  
 	  
         <div>
