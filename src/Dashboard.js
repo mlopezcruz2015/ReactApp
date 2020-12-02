@@ -23,6 +23,7 @@ function Dashboard(props) {
     // similar to componentDidMount()
     //{ http://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=30b317c25db0463c99fd191178074008}
     useEffect(() => {
+		props.history.push('/dashboard')
         
       GetCars();
 
