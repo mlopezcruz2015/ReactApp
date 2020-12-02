@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
 import axios from 'axios';
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
+import NavDropdown from 'react-bootstrap/NavDropdown';
  
 import Login from './Login';
 import Dashboard from './Dashboard';
@@ -50,23 +53,18 @@ function App() {
     <div className="App">
       <BrowserRouter>
 	  
-		  <header class="header-section">
-			<div class="container-fluid center-nav">
-				<div class="row">
-					<div class="col-lg-12">
-						<nav class="nav-menu mobile-menu">
-							<ul>
-								<li><NavLink activeClassName="active" to="/login">Login</NavLink></li>
-								<li><NavLink activeClassName="active" to="/dashboard">Dashboard</NavLink></li>
-								<li><NavLink activeClassName="active" to="/adduser">Add User</NavLink></li>
-								<li><NavLink activeClassName="active" to="/login" onClick={handleLogout}>Logout</NavLink></li>								
-							</ul>
-						</nav>
-						<div id="mobile-menu-wrap"></div>
-					</div>
-				</div>
-			</div>
-			</header>
+	  
+	  <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
+  <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+  <Navbar.Collapse id="responsive-navbar-nav">
+    <Nav className="container-fluid nav-item-new mr-auto center-nav">
+      <Nav.Link><NavLink activeClassName="active" to="/login" style={ {color: 'green'}} >Login</NavLink></Nav.Link>
+      <Nav.Link><NavLink activeClassName="active" to="/dashboard"style={ {color: 'green'}} >Dashboard</NavLink></Nav.Link>
+      <Nav.Link><NavLink activeClassName="active" to="/adduser"style={ {color: 'green'}} >Add User</NavLink></Nav.Link>
+      <Nav.Link><NavLink activeClassName="active" to="/login" style={ {color: 'green'}} onClick={handleLogout}>Logout</NavLink></Nav.Link>
+    </Nav>
+  </Navbar.Collapse>
+</Navbar>
 	  
 	  
         <div>
