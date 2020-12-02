@@ -13,6 +13,7 @@ import firebase from './firebase';
 import PrivateRoute from './Utils/PrivateRoute';
 import PublicRoute from './Utils/PublicRoute';
 import { getToken, removeUserSession, setUserSession } from './Utils/Common';
+
  
 function App() {
   const [authLoading, setAuthLoading] = useState(true);

@@ -3,6 +3,8 @@ import { Component } from "react";
 import { useEffect, useState } from "react";
 import PropTypes from "react"
 import { getUser, removeUserSession } from './Utils/Common';
+import { trackPromise } from 'react-promise-tracker';
+import Loader from 'react-loader-spinner';
  
 function Dashboard(props) {
   const owner = useFormInput('');
@@ -29,7 +31,11 @@ function Dashboard(props) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ order: order })
         };
-        fetch('https://my-python-project.azurewebsites.net/image/show', requestOptions)
+		
+		//reset cars, more aesthetic loading.
+		setCars([]);
+		
+        trackPromise(fetch('https://my-python-project.azurewebsites.net/image/show', requestOptions)
             .then(response => response.json())
             
             .then(
@@ -51,7 +57,7 @@ function Dashboard(props) {
                 console.log(error)
                 },
                 //--console.log(news)
-            )
+            ));
 
             fetch('https://my-python-project.azurewebsites.net/authorize/show', requestOptions)
             .then(response => response.json())
